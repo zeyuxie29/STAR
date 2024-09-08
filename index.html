@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://zeyuxie29.github.io/AudioTime/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AudioTime</title>
+    <link href="./DemoFile/bootstrap.min.css" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      td {
+        vertical-align: middle;
+      }
+      audio {
+        width: 20vw;
+        min-width: 100px;
+        max-width: 250px;
+      }
+      #scrollToTopBtn {
+        display: none; 
+        position: fixed; 
+        bottom: 100px; 
+        right: 100px; 
+        background-color: #027f41; 
+        color: #fff; 
+        border: none;
+        font-size: 16px; 
+        border-radius: 20%; 
+        padding: 20px;
+        cursor: pointer; 
+        z-index: 1;
+      }
+      #scrollToTopBtn:hover {
+        background-color: #2cb46e;
+      }
+      .custom-color {
+          color: #027f41;
+      }
+
+      .sample_4 {
+            flex: 0 0 24%; 
+            border: 0px solid #ddd;
+            border-radius: 8px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;    
+            
+      }
+      .sample_4 img {
+          max-width: 100%;
+          width:auto;       
+          border-radius: 8px;
+          transition: transform 0.3s ease;
+
+          
+      }
+      .sample_4 img:hover {
+          transform: scale(1.6); 
+          z-index: 2;
+      }
+      footer {
+          background-color: #098d49;
+          color: #fff;
+          text-align: center;
+          padding: 5px 0;
+      }
+        
+    </style>
+  </head>
+  <body>
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Back to top navigation bar">↑ Top ↑</button>
+    <script>
+      
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollToTopBtn").style.display = "block";
+            } else {
+                document.getElementById("scrollToTopBtn").style.display = "none";
+            }
+        }
+      
+        function scrollToTop() {
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0; 
+        }
+    </script>
+    <div class="container pt-5 mt-5 shadow p-4 mb-5 bg-white rounded">
+      <div class="text-center">
+        <h1><span class="custom-color">AudioTime</span></h1><h3>A Temporally-aligned Audio-text Benchmark Dataset</h3>
+        <p class="lead fw-bold">
+          |<a href="https://arxiv.org/abs/2407.02857" class="btn border-white bg-white fw-bold">Paper</a>|<a href="https://github.com/zeyuxie29/AudioTime" class="btn border-white bg-white fw-bold">Code</a>|
+        </p>
+        <p class="fst-italic mb-0">
+          <span class="author-block">
+            <a href="https://scholar.google.de/citations?user=LzSAnHMAAAAJ&hl=en&oi=ao">Zeyu Xie</a><sup>1,2</sup>,</span>
+          
+          <span class="author-block">
+            <a href="https://scholar.google.de/citations?user=e0h0ae8AAAAJ&hl=en&oi=ao">Xuenan Xu</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://scholar.google.de/citations?user=K6zhweAAAAAJ&hl=en&oi=ao">Zhizheng Wu</a><sup>2,3</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://scholar.google.de/citations?user=9cvRM5wAAAAJ&hl=en&oi=ao">Mengyue Wu</a><sup>1</sup>,
+          </span>
+          
+        </span></p>
+        <p><b></b></p>
+      </div>
+      <div style="text-align: center">
+        <span class="author-block"><sup>1</sup>X-LANCE Lab, Shanghai Jiao Tong University</span>
+      </div>
+      <div style="text-align: center">
+        <span class="author-block"><sup>2</sup>Shanghai AI Lab,</span>
+        <span class="author-block"><sup>3</sup>Chinese University of Hong Kong, Shenzhen</span>
+      </div>
+      <p>
+        <b><p class="custom-color">Abstract.</p></b>  
+        Recent advancements in audio generation have enabled the creation of high-fidelity audio clips from free-form textual descriptions. 
+        <span class="custom-color">However, temporal relationships, a critical feature for audio content, are currently underrepresented in mainstream models due to a lack of precise control.
+</span>
+        Specifically, users cannot accurately control the timestamps of sound events using free-form text. 
+        We acknowledge that a significant factor is the absence of <span class="custom-color">high-quality, temporally-aligned</span> audio-text datasets, which are essential for training models with temporal control. 
+        The more detailed the annotations, the better the models can understand the precise relationship between audio outputs and temporal textual prompts.
+        Therefore, we present a strongly aligned audio-text dataset, <span class="custom-color">AudioTime</span>. 
+        It provides text annotations rich in temporal information such as timestamps, duration, frequency, and ordering, covering almost all aspects of temporal control. 
+        We also provide a comprehensive metric <span class="custom-color">STEAM</span> to evaluate the temporal control performance of models. 
+        The data and evaluation scripts are available at <a href="https://github.com/zeyuxie29/AudioTime">AudioTime</a> and <a href="https://github.com/zeyuxie29/AudioTime/tree/main/STEAMtool">STEAMtool</a> respectively.
+      </p>
+      
+      <b class="custom-color">Demo Navigation.</b>
+      <div style="text-align: center;">
+        <a href="#category1" class="btn border-white bg-white fw-bold">(a) Ordering</a>
+        <a href="#category2" class="btn border-white bg-white fw-bold">(b) Duration</a>
+        <a href="#category3" class="btn border-white bg-white fw-bold">(c) Frequency</a>
+        <a href="#category4" class="btn border-white bg-white fw-bold">(d) Timestamp</a>
+        <a href="#category5" class="btn border-white bg-white fw-bold">(evaluation) STEAM </a>
+      </div>
+    </div>
+    
+    <div class="container pt-5 mt-5 shadow p-4 mb-5 bg-white rounded">
+        <h2 id="pipeline-overview" style="text-align: center;" class="custom-color">AudioTime Dataset Construction Pipeline</h2>
+        <br>
+        <p style="text-align: center;">
+            <img src="./DemoFile/acStrongPipeline_wide.png" height="200" width="800" class="img-fluid">
+        </p>
+        <div style="text-align: center">Dataset construction pipeline:  (1) data curation and filtration; (2) simulating audio and organizing metadata; (3) generating captions using LLM agents.</div>
+    </div>
+
+
+    <div class="container pb-0 shadow p-5 mb-5 bg-white rounded">
+      <h3 id="category1" class="custom-color">(a) Ordering</h3>
+      <p class="mb-0">
+        The audio contains two sequential events, with each event occurring a random number of times. The alignment signal is <span class="custom-color">the sequence of event occurrences</span>.
+        The metadata records the on- & off-set timestamp of events. 
+      </p>
+      <div class="container pt-3 table-responsive">
+        <table class="table table-hover" id="supervision-efficiency-table">
+          <thead>
+            <tr>
+              <th style="text-align: center">&emsp;&emsp;&emsp;&emsp;Caption&emsp;&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Waveform&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Metadata&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">Audio</th>     
+            </tr>
+          </thead>
+          <tbody>
+            <tr> <td><font size="-1">A buzzer sounds initially, <u>followed by</u> a busy signal repeating three times.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/ordering_syn_1.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Buzzer": [[0.871,1.637]],"Busy signal": [[4.32,5.297],[5.654,6.631],[7.951,8.928]]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/ordering_syn_1.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+               
+               
+            <tr> <td><font size="-1">A mosquito buzzes twice, <u>followed by</u> the sound of a drill.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/ordering_syn_2.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Mosquito": [[1.358,2.799], [4.164,5.573]], "Drill": [[7.159,10.0]]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/ordering_syn_2.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+          
+            <tr> <td><font size="-1">An air horn blasts three times, <u>followed by</u> two knocks.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/ordering_syn_3.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Air horn, truck horn": [[0.925,1.468],[2.053,2.596],[2.963,3.506]],"Knock": [[5.795,5.998], [6.773,6.976]]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/ordering_syn_3.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            
+            <tr><td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+            </tr>
+                             
+         </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container pb-0 shadow p-5 mb-5 bg-white rounded">
+      <h3 id="category2" class="custom-color">(b) Duration</h3>
+      <p class="mb-0">
+      The audio contains several events, each occurring once. The alignment signal is <span class="custom-color">the duration of each event</span>.
+      The metadata records the duration of event occurrences.
+      </p>
+      <div class="container pt-3 table-responsive">
+        <table class="table table-hover" id="speech-diversity">
+          <thead>
+            <tr>
+              <th style="text-align: center">&emsp;&emsp;&emsp;&emsp;Caption&emsp;&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Waveform&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Metadata&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">Audio</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr> <td><font size="-1">A neigh and whinny occurred <u>for 1.811 seconds</u>, followed by a train whistle <u></u>lasting 3.677 seconds</u>.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/duration_syn_5.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Neigh, whinny": [1.811],"Train whistle": [3.677]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/duration_syn_5.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+                          
+           <tr> <td><font size="-1">A rumble occurred for 7.606 seconds.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/duration_syn_6.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Rumble": [7.606]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/duration_syn_6.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+             
+           <tr> <td><font size="-1">A squeak lasted <u>for 0.302 seconds</u>, followed by a quack <u>for 0.314 seconds</u>.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/duration_syn_11.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Squeak": [0.302],"Quack": [0.314]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/duration_syn_11.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+           
+            <tr><td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+            </tr>
+         </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container pb-0 shadow p-5 mb-5 bg-white rounded">
+      <h3 id="category3" class="custom-color">(c) Frequency</h3>
+      <p class="mb-0">
+        Any event can occur any number of times. The alignment signal is <span class="custom-color">the frequency of event occurrences</span>. 
+        The metadata records the onset timestamp of events. 
+      </p>
+      <div class="container pt-3 table-responsive">
+        <table class="table table-hover" id="prompting-table">
+          <thead>
+            <tr>
+              <th style="text-align: center">&emsp;&emsp;&emsp;&emsp;Caption&emsp;&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Waveform&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Metadata&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">Audio</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr> <td><font size="-1">Sanding occurs <u>once</u>, followed by throat clearing <u>twice</u>.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/frequency_syn_11.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Sanding": [1.735],"Throat clearing": [6.347,8.794]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/frequency_syn_11.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+        
+           <tr> <td><font size="-1">A whip cracks <u>twice</u>, followed by a whoosh sound <u>once</u>, and ends with a slam occurring <u>once</u>.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/frequency_syn_10.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Whip": [0.973,2.783],"Whoosh, swoosh, swish": [5.758],"Slam":[9.068]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/frequency_syn_10.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+            
+           <tr> <td><font size="-1">The spray occurred <u>twice</u>, followed by <u>one instance</u> of barking.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/frequency_syn_111.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1"> "Spray": [1.393,3.159],"Bark": [6.451]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/frequency_syn_111.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+              
+            <tr><td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container pb-0 shadow p-5 mb-5 bg-white rounded">
+      <h3 id="category4" class="custom-color">(d) Timestamp</h3>
+      <p class="mb-0">
+        Any event can occur any number of times. The alignment signal is <span class="custom-color">the on- & off-set timestamps of event occurrences</span>.
+        The metadata records the on- & off-set timestamp of events. 
+      </p>
+      <div class="container pt-3 table-responsive">
+        <table class="table table-hover" id="prompting-table">
+          <thead>
+            <tr>
+              <th style="text-align: center">&emsp;&emsp;&emsp;&emsp;Caption&emsp;&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Waveform&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">&emsp;&emsp;&emsp;Metadata&emsp;&emsp;&emsp;</th>
+              <th style="text-align: center">Audio</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr> <td><font size="-1">An electric shaver buzzes <u>from 1.056 to 5.158 seconds</u>, followed by a jackhammer pounding <u>from 7.66 to 10 seconds</u>.</font></td>
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/timestamp_syn_1.png" alt="Your Image"></a></td>  
+              <td style="text-align: center"><font size="-1">"Electric shaver, electric razor": [[1.056,5.158]],"Jackhammer": [[7.66,10.0]]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/timestamp_syn_1.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+            
+           <tr> <td><font size="-1">A cap gun fires <u>from 1.045 to 1.438 seconds and again from 2.46 to 2.775 seconds</u>, followed by a door sound <u>from 4.91 to 5.288 seconds</u>.</font></td> 
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/timestamp_syn_10.png" alt="Your Image"></a></td> 
+              <td style="text-align: center"><font size="-1">"Cap gun": [[1.045,1.438],[2.46,2.775]],"Door": [[4.91,5.288]]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/timestamp_syn_10.wav" type="audio/wav">Your browser does not support the audio element.</audio></td> 
+            
+           <tr> <td><font size="-1">A vehicle horn honks <u>from 1.004 to 1.996 seconds</u>, followed by baby laughter twice, <u>from 4.261 to 5.26 and 5.799 to 7.796 seconds</u>.</font></td>
+              <td><a class="sample_4"><img src="./DemoFile/data/fig/timestamp_syn_128.png" alt="Your Image"></a></td>  
+              <td style="text-align: center"><font size="-1">"Vehicle horn, car horn, honking, toot": [[1.004,1.996]],"Baby laughter": [[4.261,5.26],[5.799,7.796]]</font></td> 
+              <td style="text-align: center"><audio controls="" controlslist="nodownload" class="px-1"> <source src="./DemoFile/data/audio/timestamp_syn_128.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+
+            <tr><td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+              <td style="border-bottom: none;"><br></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="container shadow p-5 mb-5 bg-white rounded">
+      <h3 id="category5" class="custom-color">STEAM</h3> 
+      <p class="mb-0">
+        To better test and compare the temporal controllability of generative models, we propose STEAM (Strongly TEmporally-Aligned evaluation Metric).
+        STEAM is a text-based metric that  evaluates <span class="custom-color">whether the generated audio segments meet the control requirements specified by the input text.</span>
+        An audio-text grounding model is employed to detect the onset and offset of events in generated audio. 
+        <span class="custom-color">STEAM assesses control performance based on detected timestamps and the control signal provided by the input free text.</span>
+        <br><br>
+        <ul style="list-style: outside none none !important;">
+          <li>(a) Ordering: To determine whether the audio generates events A and B in the specified order, quantified by the <span class="custom-color">error rate</span>.
+          Specifically, the onset of A should occur before B.
+          If there is overlap, it should not exceed half the duration of the shorter event (otherwise, they are considered simultaneous). </li><br>
+
+          <li>(b) Duration / (c) frequency: Calculate the <span class="custom-color">absolute error</span> 
+            between the event duration/frequency in the generated audio and the value specified in the text, averaged over the total number of events.</li><br>
+
+          <li>(d) Timestamp: To measure the accuracy of controlling audio timestamps.
+          <span class="custom-color">Segment F1</span>, a common metric in sound event detection tasks, is calculated using the detected and specified on- & off-set timestamp.</li>
+        </ul>
+        
+      </p>
+      The testing script is available at <a href="https://github.com/zeyuxie29/AudioTime/tree/main/STEAMtool">STEAMtool</a>.
+      We test some currently influential TTA generation models.
+      <br><br>
+      <p style="text-align: center;">
+        <img src="./DemoFile/Exp_result.png" height="200" width="800" class="img-fluid">
+      </p>
+      
+    </div>
+    <div class="container pt-5 mt-5 shadow p-5 bg-white rounded">
+      <h3 id="category6" class="custom-color">Acknowledgement</h3> 
+        The demo website template was obtained from <a href="https://github.com/bytedance/Make-An-Audio-2">Make-An-Audio-2</a>, and we appreciate their open-source contribution!
+          
+    </div>
+      
+    <footer>
+      &copy; 2024 AudioTime
+    </footer>
+
+  
+</body></html>
