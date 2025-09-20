@@ -66,6 +66,55 @@
           padding: 5px 0;
       }
 
+      .fixed-navbar {
+          position: fixed;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          align-items: center;
+          top: -100px; 
+          width: 100%;
+          background: linear-gradient(135deg, #e8eef9 0%, #e9eee9 100%);;
+          backdrop-filter: blur(10px);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+          border-radius: 0 0 12px 12px;
+
+          z-index: 1000;
+          padding: 5px 160px;
+          transition: top 0.5s ease;
+          text-align: center; 
+      }
+      
+      .btn {
+          display: inline-block;
+          padding: 8px 16px;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+      }
+
+      .nav-btn.btn{
+          background: transparent;
+          /* background: rgba(255, 255, 255, 0.7);
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); */
+          color: #333;
+          font-weight: 600;   
+      }
+      
+      .nav-btn:hover {
+          background: #3778FF;
+          color: white !important;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(3, 134, 112, 0.4);
+      }
+      
+      .nav-btn.active {
+          background: #3778FF;
+          color: white;
+      }
+
     </style>
 
     <link rel="icon" type="image/png" href="./DemoFile/favicon/favicon-96x96.png" sizes="96x96" />
@@ -77,28 +126,45 @@
 
   </head>
   <body>
-    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Back to top navigation bar">↑ Top ↑</button>
-    <script>
-      
-        window.onscroll = function() {scrollFunction()};
+    <nav class="fixed-navbar" id="scrollNav"> 
+      <a href="#navigation" class="btn nav-btn" style="color: #3778FF;">Navigation Bar</a>     
+      <a href="#pipeline-overview" class="btn nav-btn">Overview</a>
+      <a href="#demo1" class="btn nav-btn" style="color: #3778FF;">Demo</a>
+      <a href="#top" class="btn nav-btn">⬆ Return to Top ⬆</a>
+    </nav>
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("scrollToTopBtn").style.display = "block";
-            } else {
-                document.getElementById("scrollToTopBtn").style.display = "none";
-            }
-        }
+    <script>
+      window.addEventListener('scroll', function() {
+          const scrollNav = document.getElementById('scrollNav');
+          const scrollPosition = window.scrollY;
+          
+          if (scrollPosition > 20) {
+              scrollNav.style.top = '0';
+          } else {
+              scrollNav.style.top = '-100px';
+          }
+      });
       
-        function scrollToTop() {
-            document.body.scrollTop = 0; 
-            document.documentElement.scrollTop = 0; 
-        }
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              
+  
+              window.scrollTo({
+                  top: targetElement.offsetTop - 100,
+                  behavior: 'smooth'
+              });
+
+          });
+      });
     </script>
 
     
 
-    <div class="container pt-5 mt-5 shadow p-4 mb-5 bg-white rounded">
+    <div class="container pt-5 mt-5 shadow p-4 mb-5 bg-white rounded" id="top">
       <div class="text-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <img src="./DemoFile/favicon/web-app-manifest-512x512.png" alt="STAR_icon" style="width: 60px; height: 60px; margin-right: -5px; margin-bottom: 10px;">
@@ -116,7 +182,7 @@
             <a href="https://scholar.google.de/citations?user=e0h0ae8AAAAJ&hl=en&oi=ao">Xuenan Xu</a> <sup>2</sup>,
           </span>
           <span class="author-block">
-            <a href="">Yixuan Li</a> <sup>2</sup>,
+            <a >Yixuan Li</a> <sup>2</sup>,
           </span>
           <span class="author-block">
             <a href="https://scholar.google.de/citations?user=9cvRM5wAAAAJ&hl=en&oi=ao">Mengyue Wu</a> <sup>2</sup>,
@@ -143,7 +209,7 @@
         Generated samples are available below.
       </p>
       
-      <b class="custom-color">Demo Navigation.</b>
+      <b class="custom-color"  id="navigation">Demo Navigation.</b>
       <div style="text-align: center;">
         <a href="#pipeline-overview" class="btn border-white bg-white fw-bold">(a) Overview</a>
         <a href="#demo1" class="btn border-white bg-white fw-bold">(b) Demo 1-5</a>
