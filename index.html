@@ -129,7 +129,7 @@
     <nav class="fixed-navbar" id="scrollNav"> 
       <a href="#navigation" class="btn nav-btn" style="color: #3778FF;">Navigation Bar</a>     
       <a href="#pipeline-overview" class="btn nav-btn">Overview</a>
-      <a href="#demo1" class="btn nav-btn" style="color: #3778FF;">Demo</a>
+      <a href="#demo" class="btn nav-btn" style="color: #3778FF;">Demo</a>
       <a href="#top" class="btn nav-btn">⬆ Return to Top ⬆</a>
     </nav>
 
@@ -162,9 +162,12 @@
       });
     </script>
 
+
     
 
     <div class="container pt-5 mt-5 shadow p-4 mb-5 bg-white rounded" id="top">
+      
+
       <div class="text-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <img src="./DemoFile/favicon/web-app-manifest-512x512.png" alt="STAR_icon" style="width: 60px; height: 60px; margin-right: -5px; margin-bottom: 10px;">
@@ -172,7 +175,15 @@
         </div>
         <h3>STAR: Speech-to-Audio Generation via Representation Learning</h3>
         <p class="lead fw-bold">
-          |<a href="https://arxiv.org/abs/2509.17164" class="btn border-white bg-white fw-bold">Paper</a>|<a href="https://github.com/zeyuxie29/STAR" class="btn border-white bg-white fw-bold">Code</a>|
+          |
+          <a href="https://arxiv.org/abs/2509.17164" class="btn border-white bg-white fw-bold" target="_blank" >Paper</a>
+          |
+          <a href="https://www.youtube.com/watch?v=OeXYA5elwRM" class="btn border-white bg-white fw-bold" target="_blank" >Youtube Demo</a>
+          |
+          <a href="https://huggingface.co/spaces/assasinatee/STAR" class="btn border-white bg-white fw-bold" target="_blank" >HuggingFace Space</a>
+          |
+          <a href="https://github.com/zeyuxie29/STAR" class="btn border-white bg-white fw-bold" target="_blank" >Code</a>
+          |
         </p>
         <p class="fst-italic mb-0">
           <span class="author-block">
@@ -212,8 +223,9 @@
       <b class="custom-color"  id="navigation">Demo Navigation.</b>
       <div style="text-align: center;">
         <a href="#pipeline-overview" class="btn border-white bg-white fw-bold">(a) Overview</a>
-        <a href="#demo1" class="btn border-white bg-white fw-bold">(b) Demo 1-5</a>
-        <a href="#demo6" class="btn border-white bg-white fw-bold">(c) Demo 6-10</a>
+        <a href="#demo" class="btn border-white bg-white fw-bold">(b) Video Demo</a>
+        <a href="#demo1" class="btn border-white bg-white fw-bold">(c) Demo 1-5</a>
+        <a href="#demo6" class="btn border-white bg-white fw-bold">(d) Demo 6-10</a>
       </div>
     </div>
     
@@ -231,14 +243,38 @@
 
 
     <div class="container pb-0 shadow p-5 mb-5 bg-white rounded">
-      <h3 id="demo1" class="custom-color"> Demo </h3>
+      <h3 id="demo" class="custom-color"> Demo </h3>
+
+      <div class="container pt-3 table-responsive">
+        <table class="table table-hover"  id="supervision-efficiency-table" >
+          <thead>
+            <th style="text-align: center" colspan="2">Video Demo <span class="custom-color">(Youtube ID: OeXYA5elwRM, produced by Yixuan Li)</span></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center" colspan="2">
+                <iframe width="560" height="315" 
+                  src="https://www.youtube.com/embed/OeXYA5elwRM" 
+                  frameborder="0" allowfullscreen>
+                </iframe>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr><td style="border-bottom: none;"><br></td>
+            </tr>                  
+          </tbody>
+        </table>
+      </div>
+
       <p class="mb-0">
         
       </p>
       <div class="container pt-3 table-responsive">
         <table class="table table-hover" id="supervision-efficiency-table" >
           <thead>
-            <th style="text-align: left">1</th>
+            <th style="text-align: left"  id="demo1">1</th>
             <th style="text-align: center" colspan="2">Speech transcription <span class="custom-color">A cat meowing and young female speaking</span></th>
           </thead>
           <tbody>
