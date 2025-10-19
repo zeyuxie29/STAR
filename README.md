@@ -5,11 +5,11 @@
 [![Youtube Demo](https://img.shields.io/badge/YouTube-Video_Demo-red?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=OeXYA5elwRM)
 
 This work presents **STAR**, the first end-to-end speech-to-audio generation framework, designed to enhance efficiency and address error propagation inherent in cascaded systems. 
-It：
+It:
 * Recognize the potential of the speech-to-audio generation task and have designed the first E2E system STAR;
 * Validate E2E STA feasibility via representation learning experiments, showing that spoken sound event semantics can be directly extracted;
 * Achieve effective speech-to-audio modal alignment through a bridge network mapping mechanism and a two-stage training strategy;
-* Significantly reduces speech processing latency from 156ms to 36ms(≈ 76.9%reduction),whilesurpassing the generation performance of cascaded systems.
+* Significantly reduces speech processing latency from 156ms to 36ms(≈ 76.9% reduction), whilesurpassing the generation performance of cascaded systems.
 
 ### Table of Contents
  - [Data Preparation](#DataPreparation)
@@ -43,4 +43,5 @@ python src/sta_generation/evaluation/star.py --gen_audio_dir {generated_audio_fo
 
 ## Acknowledgement
 Our code referred to the [WavLM](https://github.com/microsoft/unilm/tree/master/wavlm), [fairseq](https://github.com/facebookresearch/fairseq), [DAC](https://github.com/descriptinc/descript-audio-codec), [SECap](https://github.com/thuhcsi/SECap), [HEAR](https://hearbenchmark.com/). We appreciate their open-sourcing of their code.
+
 
