@@ -1,0 +1,23 @@
+defaults:
+  - autoencoder: stable_vae
+  - backbone: udit
+  - _self_
+
+cfg_drop_ratio: 0.2
+
+backbone:
+  #context_dim: ${..content_dim}
+  #ta_context_dim: ${..content_dim}
+  embed_dim: 1024
+  depth: 24
+  num_heads: 16
+
+_target_: models.flow_matching.SingleTaskCrossAttentionAudioFlowMatching
+content_encoder:
+  _target_: models.content_encoder.content_encoder.ContentEncoder
+  embed_dim: 1024
+  text_encoder: None
+  speech_encoder:
+    _target_: models.content_encoder.star_encoder.star_encoder.QformerBridgeNet
+    load_from_pretrained: output/qformer_caption_tts_hubert/exp0_best.pt
+ 
