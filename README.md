@@ -22,7 +22,7 @@ It:
 <a id="Preparation"></a>
 ### :scissors: Environment and Data Preparation
 #### Environment Setup ####
-Please refer to [UniFlow-Audio](https://github.com/wsntxxn/UniFlow-Audio) for environment setup, as well as [WavLM](https://github.com/microsoft/unilm/tree/master/wavlm), [fairseq](https://github.com/facebookresearch/fairseq), [DAC](https://github.com/descriptinc/descript-audio-codec), [SECap](https://github.com/thuhcsi/SECap), which are used for speech feature extraction.
+Please refer to [UniFlow-Audio](https://github.com/wsntxxn/UniFlow-Audio) for environment setup, as well as [WavLM](https://github.com/microsoft/unilm/tree/master/wavlm), [fairseq](https://github.com/facebookresearch/fairseq), [DAC](https://github.com/descriptinc/descript-audio-codec), which are used for speech feature extraction.
 
 #### Data Preparation #### 
 Generating corresponding speech from captions in Audiocaps, followed by feature extraction using different speech encoders (DAC, Hubert, WavLM):
@@ -54,6 +54,7 @@ python src/sta_generation/evaluation/star.py --gen_audio_dir {generated_audio_fo
 
 ## Acknowledgement
 Our code referred to the [WavLM](https://github.com/microsoft/unilm/tree/master/wavlm), [fairseq](https://github.com/facebookresearch/fairseq), [DAC](https://github.com/descriptinc/descript-audio-codec), [SECap](https://github.com/thuhcsi/SECap), [HEAR](https://hearbenchmark.com/). We appreciate their open-sourcing of their code.
+
 
 
 
